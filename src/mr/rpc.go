@@ -1,29 +1,30 @@
 package mr
 
-//
-// RPC definitions.
-//
-// remember to capitalize all names.
-//
-
 import "os"
 import "strconv"
 
-//
-// example to show how to declare the arguments
-// and reply for an RPC.
-//
-
-type ExampleArgs struct {
-	X int
+type AllocTaskArgs struct {
 }
 
-type ExampleReply struct {
-	Y int
+type AllocTaskReply struct {
+	TaskType int // 0:none 1:map 2:reduce
+	TaskId int 
+	Filename string // used by map
+	NReduce int // used by map
 }
 
-// Add your RPC definitions here.
 
+type CallBackMapTaskArgs struct {
+	TaskId int
+}
+type CallBackMapTaskReply struct {
+}
+
+type CallBackReduceTaskArgs struct {
+	TaskId int
+}
+type CallBackReduceTaskReply struct {
+}
 
 // Cook up a unique-ish UNIX-domain socket name
 // in /var/tmp, for the coordinator.
